@@ -37,9 +37,9 @@ class Bodywidget extends StatelessWidget {
       //     ],
       //   ),
       // ),
-      children: [
-        Productwidget()
-      ],
+      // children: [
+      //   Productwidget()
+      // ],
     );
   }
 }

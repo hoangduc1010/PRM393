@@ -1,46 +1,37 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Productwidget extends StatelessWidget {
-  const Productwidget({super.key});
+
+class ButtonLike extends StatefulWidget {
+  const ButtonLike({super.key});
 
   @override
+  State<ButtonLike> createState() => _ButtonLikeState();
+}
+
+class _ButtonLikeState extends State<ButtonLike> {
+  int x = 0;
+  void ChangeLike(){
+    setState(() {
+      if(x==0){
+        x=1;
+      }else if (x==1){
+        x=2;
+      }else if (x==2){
+        x=0;
+      }
+
+    });
+  }
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        // sap xep giao dien theo chieu doc
-        children: [
-          Container(
-            child: Image.network(
-              "https://nhathidauhoxuanhuong.com/wp-content/uploads/2025/07/tran-ha-linh-11-768x1024.jpg",
-              fit: BoxFit.cover, // Sửa vị trí URL và đổi fit nếu cần
-            ),
-          ), // <-- Đã thêm dấu phẩy ở đây
-          Card(
-            child: Column(
-              children: [
-                const Text("Name: Nong Hoang Duc"),
-                Row(
-                  children: [
-                    const Text("Price: "),
-                    const Text(
-                      'Old: 30\$',
-                      style: TextStyle(color: Colors.blue),
-                    ),
-                    const Text(
-                      'Sale: 20\$',
-                      style: TextStyle(
-                        color: Colors.red,
-                        fontSize: 16, // <-- fontSize phải nằm trong TextStyle
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ],
+    return IconButton(
+      onPressed: ChangeLike,
+      icon: Icon(
+        x == 2 ? Icons.thumb_down : Icons.thumb_up,
+        color: x == 1 ? Colors.blue : null,
       ),
     );
   }
 }
+
